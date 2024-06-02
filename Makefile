@@ -14,6 +14,9 @@ default: help
 3b: bin/multi-broadcast # Multi-Node Broadcast
 	./maelstrom/maelstrom test -w broadcast --bin $^ --node-count 5 --time-limit 20 --rate 10
 
+3c: bin/fault-broadcast # Fault-Tolerant Broadcast
+	./maelstrom/maelstrom test -w broadcast --bin $^ --node-count 5 --time-limit 20 --rate 10 --nemesis partition
+
 bin/%: %.go
 	go build -o $@ $^
 
