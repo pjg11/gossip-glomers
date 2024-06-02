@@ -11,6 +11,9 @@ default: help
 3a: bin/single-broadcast # Single-Node Broadcast
 	./maelstrom/maelstrom test -w broadcast --bin $^ --node-count 1 --time-limit 20 --rate 10
 
+3b: bin/multi-broadcast # Multi-Node Broadcast
+	./maelstrom/maelstrom test -w broadcast --bin $^ --node-count 5 --time-limit 20 --rate 10
+
 bin/%: %.go
 	go build -o $@ $^
 
@@ -22,4 +25,4 @@ help: # Print this help message
 	| column -c2 -t -s :
 
 clean: # Remove generated files
-	rm -rf bin
+	rm -rf bin/ store/
